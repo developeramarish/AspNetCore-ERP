@@ -1,0 +1,130 @@
+﻿@model AppUserAddDto
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_RegisterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="header-text">
+                    <h2>Bilge Adam ERP Kullanıcı Kayıt </h2>
+                    <h4>Bilge Adam ERP Sistemi için aşağıdaki bilgileri doldurarak kayıt olunuz ... </h4>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <div class="media">
+                    <div class="media-left">
+                        <div class="icon icon-danger">
+                            <i class="ti ti-user"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h5>Kullanıcı</h5>
+                        Burada girilen bilgilerinizden sonra ERP Sistemini kullanmaya başlayabilirsiniz.
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <div class="icon icon-warning">
+                            <i class="ti-bar-chart-alt"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h5>Yetkiler</h5>
+                        Program Parametreleri ile ilgili yetkiler, Admin kullanıcısına aittir. Bunun dışında tüm sistemi kullanabilirsiniz.
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <div class="icon icon-info">
+                            <i class="ti-headphone"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h5>7/24 Destek</h5>
+                        Tüm soru ve sorunlarınız için 09:00-17:00 saatleri arasında destek hattımızı arayabilirsiniz. 0 850 - 850 1 850
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form  id="registerFormValidation" action="" method="post" novalidate="">
+                    <div class="card card-plain">
+                        <div class="content">
+                            <div class="form-group">
+                                <input type="text" placeholder="Adınızı giriniz" class="form-control"
+                                       asp-for="Adi"
+                                       name="Adi"
+                                       id="registerAdi"
+                                       required="true" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Soyadınızı giriniz" class="form-control"
+                                       asp-for="Soyadi"
+                                       name="Soyadi"
+                                       id="registerSoyadi"
+                                       required="true" />
+
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Cep Telefon giriniz" class="form-control"
+                                       asp-for="Gsm"
+                                       name="Gsm"
+                                       id="registerGsm"
+                                       required="true" />
+
+                            </div>
+                            <div class="form-group">
+                                <input type="Email" placeholder="Mail adresinizi giriniz" class="form-control"
+                                       asp-for="Email"
+                                       name="Email"
+                                       id="registerEmail"
+                                       required="true" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Kullanıcı adınızı giriniz" class="form-control"
+                                       asp-for="UserName"
+                                       name="UserName"
+                                       id="registerUserName"
+                                       required="true" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Şifrenizi giriniz" class="form-control"
+                                       asp-for="Password"
+                                       name="Password"
+                                       id="registerPassword"
+                                       required="true" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Şifrenizi tekrar giriniz" class="form-control"
+                                       asp-for="ConfirmPassword"
+                                       name="ConfirmPassword"
+                                       id="registerConfirmPassword"
+                                       required="true" />
+                            </div>
+                        </div>
+                        <div class="footer text-center">
+                            <button type="submit" class="btn btn-fill btn-danger btn-wd">Kaydolun</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#registerFormValidation').validate();
+            $('#loginFormValidation').validate();
+            $('#allInputsFormValidation').validate();
+        });
+    </script>
+
+}

@@ -1,0 +1,55 @@
+﻿@model AppUserSignDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                <form id="registerFormValidation" asp-action="Login" method="post" novalidate="">
+                    <div class="card" data-background="color" data-color="blue">
+                        <div class="card-header">
+                            <h3 class="card-title">Login</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label asp-for="UserName">Kullanıcı Adınız</label>
+                                <input type="text" placeholder="Kullanıcı adınız" class="form-control input-no-border"
+                                       asp-for="UserName"
+                                       name="UserName"
+                                       id="registerUserName"
+                                       required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password">Şifreniz</label>
+                                <input type="password" placeholder="Şifreniz" class="form-control input-no-border"
+                                       asp-for="Password"
+                                       name="Password"
+                                       id="registerPassword"
+                                       required="true" />
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-fill btn-wd ">Giriş</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#registerFormValidation').validate();
+            $('#loginFormValidation').validate();
+            $('#allInputsFormValidation').validate();
+        });
+    </script>
+
+}

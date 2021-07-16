@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\c_ilk\.nuget\packages\nlog.config\4.7.7\contentFiles\any\any\NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="EPPlus" Version="5.5.4" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.1" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="NLog" Version="4.7.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FinalProject.Erp.Core\FinalProject.Erp.Core.csproj" />
+    <ProjectReference Include="..\FinalProject.Erp.DataAccess\FinalProject.Erp.DataAccess.csproj" />
+    <ProjectReference Include="..\FinalProject.Erp.Model\FinalProject.Erp.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,111 @@
+﻿@model DepoEditDto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <form id="registerFormValidation" action="" method="post" novalidate="">
+                <div class="card-header">
+                    <input type="hidden" asp-for="Id" />
+                    <h4 class="card-title">
+                        <b>Depo Bilgileri</b>
+                    </h4>
+                </div>
+
+                <div class="card-content">
+                    <div class="form-group">
+                        <label asp-for="Kod" class="control-label">Kod <star>*</star></label>
+                        <input class="form-control"
+                               asp-for="Kod"
+                               name="Kod"
+                               id="registerKod"
+                               type="text"
+                               required="true"
+                               autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DepoAdi" class="control-label">Depo Adı <star>*</star></label>
+                        <input class="form-control"
+                               asp-for="DepoAdi"
+                               name="DepoAdi"
+                               id="registerDepoAdi"
+                               type="text"
+                               required="true" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Yetkili" class="control-label">Yetkili </label>
+                        <input class="form-control"
+                               asp-for="Yetkili"
+                               name="Yetkili"
+                               id="Yetkili"
+                               type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Telefon" class="control-label">Telefon </label>
+                        <input class="form-control"
+                               asp-for="Telefon"
+                               name="Telefon"
+                               id="Telefon"
+                               type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Adres" class="control-label">Adres </label>
+                        <input class="form-control"
+                               asp-for="Adres"
+                               name="Adres"
+                               id="Adres"
+                               type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Aciklama" class="control-label">Açıklama </label>
+                        <input class="form-control"
+                               asp-for="Aciklama"
+                               name="Aciklama"
+                               id="registerAciklama"
+                               type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Durum" class="control-label">Aktif / Pasif </label>
+                        <input asp-for="Durum" type="checkbox" class="switch-icon" checked>
+                    </div>
+
+                    <div class="category"><star>*</star> Zorunlu Alan</div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="mr-2 btn btn-danger btn-fill pull-right">Kaydet</button>
+                    <a asp-controller="Depo" asp-action="Index" class="mr-2 btn btn-default btn-fill pull-right">Vazgeç</a>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#registerFormValidation').validate();
+            $('#loginFormValidation').validate();
+            $('#allInputsFormValidation').validate();
+        });
+    </script>
+
+}

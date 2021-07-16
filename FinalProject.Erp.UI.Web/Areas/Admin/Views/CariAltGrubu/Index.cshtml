@@ -1,0 +1,161 @@
+﻿@model List<CariAltGrubuListDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <b>Cari Alt Grubu Listesi</b>
+                    </h4>
+                </div>
+
+                <div class="toolbar">
+                    <!--Here you can write extra buttons/actions for the toolbar-->
+                    <a asp-area="Admin" asp-controller="CariGrubu" asp-action="Index" class="mr-2 btn btn-default btn-fill btn-wd">Cari Gruplar</a>
+                    @if (ViewBag.AktifKartlar)
+                    {
+                        <a asp-area="Admin" asp-controller="CariAltGrubu" asp-action="Index" asp-route-id="@ViewBag.CariGrubuId" asp-route-durum="false" class="mr-2 btn btn-default btn-fill btn-wd">Pasif Kartlar</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Admin" asp-controller="CariAltGrubu" asp-action="Index" asp-route-id="@ViewBag.CariGrubuId" asp-route-durum="true" class="mr-2 btn btn-default btn-fill btn-wd">Aktif Kartlar</a>
+                    }
+
+                    <a asp-area="Admin" asp-controller="CariAltGrubu" asp-action="Add" class="mr-2 btn btn-default btn-fill btn-wd">Yeni Cari Alt Grubu</a>
+                    <a asp-area="Admin" asp-controller="CariAltGrubu" asp-action="Excel" target="_blank" class="mr-2 btn btn-default btn-fill btn-wd">Excel</a>
+                    <a asp-area="Admin" asp-controller="CariAltGrubu" asp-action="Pdf" target="_blank" class="mr-2 btn btn-default btn-fill btn-wd">Pdf</a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </div>
+                <table id="bootstrap-table" class="table">
+                    <thead>
+                    @*<th data-field="Id" class="text-center">Id</th>*@
+                    <th data-field="Kod" data-sortable="true">Kod</th>
+                    <th data-field="CariAltGrubuAdi" data-sortable="true">Cari Alt Grubu Adı</th>
+                    <th data-field="Aciklama" data-sortable="true">Açıklama</th>
+                    <th class="td-actions text-right">İşlemler</th>
+                    </thead>
+                    <tbody>
+                        @foreach (CariAltGrubuListDto item in Model)
+                        {
+                            <tr>
+                                @*<td>@item.Id</td>*@
+                                <td>@item.Kod</td>
+                                <td>@item.CariAltGrubuAdi</td>
+                                <td>@item.Aciklama</td>
+                                <td>
+                                    <div class="table-icons">
+                                        <a asp-controller="CariAltGrubu" asp-action="Edit" asp-route-id="@item.Id"
+                                           rel="tooltip" title="Edit" class="btn btn-simple btn-warning btn-icon table-action edit">
+                                            <i class="ti-pencil-alt"></i>
+                                        </a>
+                                        <a href="" data-toggle="modal" data-target="#silmeOnayi" data-silinecekid="@item.Id"
+                                           class="btn btn-simple btn-danger btn-icon table-action remove">
+                                            <i class="ti-close"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div><!--  end card  -->
+    </div> <!-- end col-md-12 -->
+</div> <!-- end row -->
+<!-- Modal -->
+<div class="modal fade" id="silmeOnayi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">DİKKAT !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Seçtiğiniz Cari Alt Grubu kartını silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır Vazgeç</button>
+                <button id="btnSil" type="button" class="btn btn-primary">Evet Sil</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        var $table = $('#bootstrap-table');
+
+        $().ready(function () {
+
+            $table.bootstrapTable({
+                toolbar: ".toolbar",
+                clickToSelect: true,
+                showRefresh: true,
+                search: true,
+                showToggle: true,
+                showColumns: true,
+                pagination: true,
+                searchAlign: 'left',
+                pageSize: 5,
+                clickToSelect: false,
+                pageList: [5, 10, 25, 50, 100],
+
+                formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                    //do nothing here, we don't want to show the text "showing x of y from..."
+                },
+                formatRecordsPerPage: function (pageNumber) {
+                    return pageNumber + " kayıt göster";
+                },
+                icons: {
+                    refresh: 'fa fa-refresh',
+                    toggle: 'fa fa-th-list',
+                    columns: 'fa fa-columns',
+                    detailOpen: 'fa fa-plus-circle',
+                    detailClose: 'ti-close'
+                }
+            });
+
+            //activate the tooltips after the data table is initialized
+            $('[rel="tooltip"]').tooltip();
+
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView');
+            });
+
+            $("#silmeOnayi").on("show.bs.modal", function (event) {
+                let tetikleyenElement = $(event.relatedTarget);
+                let id = tetikleyenElement.data("silinecekid");
+
+                $("#btnSil").click(function () {
+                    $.ajax({
+                        type: "Get",
+                        url: "/Admin/CariAltGrubu/Delete",
+                        data: { id: id },
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8;",
+                        success: function () {
+                            window.location.reload();
+                        },
+                        error: function (error) {
+                            alert(error.statusText);
+                        }
+                    })
+                });
+            })
+
+        });
+
+    </script>
+}

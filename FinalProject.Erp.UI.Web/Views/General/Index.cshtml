@@ -1,0 +1,343 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-warning text-center">
+                            Dolar
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>USD/TRY</p>
+                            @ViewBag.Dolar
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="1 American Doları'nın TL Karşılığı "></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-success text-center">
+                            Euro
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>EUR/TRY</p>
+                            @ViewBag.Euro
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="1 Euro'nun TL Karşılığı "></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-danger text-center">
+                            Pound
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>GBP/TRY</p>
+                            @ViewBag.Pound
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="1 İngiltere Poundu'nun TL Karşılığı "></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-info text-center">
+                            Yen
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>JPY/TRY</p>
+                            @ViewBag.Yen
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="1 Japon Yeni'nin TL Karşılığı "></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="height:100px;">
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-warning text-center">
+                            Banka
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Bakiye</p>
+                            @ViewBag.Banka
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Mevcut Banka Durumu"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-success text-center">
+                            Kasa
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Bakiye</p>
+                            @ViewBag.Kasa
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Mevcut Kasa Durumu"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-danger text-center">
+                            Borç
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Bakiye</p>
+                            @ViewBag.Borc
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Mevcut Borç Durumu"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-info text-center">
+                            Alacak
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Bakiye</p>
+                            @ViewBag.Alacak
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Mevcut Alacak Durumu"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="height:100px;">
+
+</div>
+
+
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-warning text-center">
+                            Alış
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Toplam</p>
+                            148.275,77
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Toplam Alış Tutarı"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-success text-center">
+                            Alış İade
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Toplam</p>
+                            14.254,45
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Toplam Alış İade Tutarı"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div style="font-size:30px" class="icon-big icon-danger text-center">
+                            Satış
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Toplam</p>
+                            477.859,47
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Toplam Satış Tutarı"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div style="font-size:30px" class="icon-big icon-info text-center">
+                            Satış İade
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="numbers">
+                            <p>Toplam</p>
+                            11,231.35
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <hr />
+                <div class="stats">
+                    <div class="pull-right" style="position:relative; display:inline-block;"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Toplam Satış İade Tutarı"></i></div>
+                    <i class="ti-clipboard"></i><div class="my-inline-block" id="campaign-name4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,168 @@
+﻿@model AppUserEditDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    string profilAdiSoyadi = String.Empty;
+    string profilKullaniciAdi = String.Empty;
+
+    if (TempData["ProfilAdiSoyadi"] != null)
+    {
+        profilAdiSoyadi = TempData["ProfilAdiSoyadi"].ToString();
+        profilKullaniciAdi = TempData["ProfilKullaniciAdi"].ToString();
+    }
+}
+
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <div class="image">
+                <img src="../../img/background.jpg" alt="ProfileBg" />
+            </div>
+            <div class="card-content">
+                <div class="author">
+                    <img id="profileImg" name="profileImg" class="avatar border-white" src="../../img/profile/@Model.Resim" alt="Profile" />
+                    <h4 class="card-title">
+                        @profilAdiSoyadi<br />
+                        <a href="#"><small>@profilKullaniciAdi</small></a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Profilim</h4>
+            </div>
+            <div class="card-content">
+                <form id="registerFormValidation" action="" method="post" novalidate="" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="UserName">Kullanıcı Adı</label>
+                                <input type="text" name="UserName" asp-for="UserName" class="form-control border-input"
+                                       id="registerUserName"
+                                       required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Gsm">Gsm</label>
+                                <input type="text" name="Gsm" asp-for="Gsm" class="form-control border-input"
+                                       id="registerGsm"
+                                       required="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Email">Email Adresi</label>
+                                <input type="email" name="Email" asp-for="Email" class="form-control border-input"
+                                       id="registerEmail"
+                                       required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Adi">Adı</label>
+                                <input type="text" name="Adi" asp-for="Adi" class="form-control border-input"
+                                       id="registerAdi"
+                                       required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Soyadi">Soyadı</label>
+                                <input type="text" name="Soyadi" asp-for="Soyadi" class="form-control border-input"
+                                       id="registerSoyadi"
+                                       required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Adres">Adres</label>
+                                <input type="text" asp-for="Adres" class="form-control border-input" placeholder="Adres">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Sehir">Şehir</label>
+                                <input type="text" asp-for="Sehir" class="form-control border-input" placeholder="Şehir Adı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Ilce">İlçe Adı</label>
+                                <input type="text" asp-for="Ilce" class="form-control border-input" placeholder="İlçe Adı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PostaKodu">Posta Kodu</label>
+                                <input type="number" asp-for="PostaKodu" class="form-control border-input" placeholder="Posta Kodu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Aciklama">Açıklamalar</label>
+                                <textarea rows="5" asp-for="Aciklama" class="form-control border-input" placeholder="Açıklamalar">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Resim Değştir</label>
+                                <input type="file" id="resim" name="resim" class="form-control-file" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd">Profilimi Güncelle</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#registerFormValidation').validate();
+            $('#loginFormValidation').validate();
+            $('#allInputsFormValidation').validate();
+
+
+            $("#resim").change(function (e) {
+
+                $("#profileImg").attr("src", URL.createObjectURL(e.target.files[0]));
+
+            });
+
+
+
+        });
+    </script>
+
+}
+

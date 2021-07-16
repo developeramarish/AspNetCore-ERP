@@ -1,0 +1,354 @@
+﻿@model StokEditDto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <form id="registerFormValidation" action="" method="post" novalidate="">
+                <div class="card-header">
+                    <input type="hidden" asp-for="Id" />
+                    <h4 class="card-title">
+                        <b>Stok Bilgileri</b>
+                    </h4>
+                </div>
+
+                <div class="card-content">
+                    <div class="form-group">
+                        <label asp-for="Kod" class="control-label">Kod <star>*</star></label>
+                        <input class="form-control"
+                               asp-for="Kod"
+                               name="Kod"
+                               id="registerKod"
+                               type="text"
+                               required="true"
+                               autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StokAdi" class="control-label">Stok Adı <star>*</star></label>
+                        <input class="form-control"
+                               asp-for="StokAdi"
+                               name="StokAdi"
+                               id="registerStokAdi"
+                               type="text"
+                               required="true" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StokTurId" class="control-label">Stok Tür </label>
+                                <select asp-for="StokTurId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Stok Tür Seçiniz" data-size="7"
+                                        required="true"
+                                        asp-items="ViewBag.StokTurler">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Barkod" class="control-label">Barkod </label>
+                                <input class="form-control"
+                                       asp-for="Barkod"
+                                       name="Barkod"
+                                       id="registerBarkod"
+                                       required="true"
+                                       type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AlisKdv" class="control-label">Alış Kdv </label>
+                                <select asp-for="AlisKdv" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Alış Kdv Seçiniz" data-size="7"
+                                        required="true">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>8</option>
+                                    <option>18</option>
+                                    <option>25</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SatisKdv" class="control-label">Satis Kdv </label>
+                                <select asp-for="SatisKdv" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Satis Kdv Seçiniz" data-size="7"
+                                        required="true">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>8</option>
+                                    <option>18</option>
+                                    <option>25</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AlisKdvDurum" class="control-label">Alış Kdv Durum </label>
+                                <select asp-for="AlisKdvDurum" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Alış Kdv Durum Seçiniz" data-size="7"
+                                        required="true"
+                                        asp-items="Html.GetEnumSelectList<FinalProject.Erp.Common.Enums.KdvDurum>()">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SatisKdvDurum" class="control-label">Alış Kdv Durum </label>
+                                <select asp-for="SatisKdvDurum" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Satış Kdv Durum Seçiniz" data-size="7"
+                                        required="true"
+                                        asp-items="Html.GetEnumSelectList<FinalProject.Erp.Common.Enums.KdvDurum>()">
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AlisFiyat1" class="control-label">Alış Fiyat 1 </label>
+                                <input class="form-control"
+                                       asp-for="AlisFiyat1"
+                                       name="AlisFiyat1"
+                                       id="AlisFiyat1"
+                                       type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AlisFiyat2" class="control-label">Alış Fiyat 2 </label>
+                                <input class="form-control"
+                                       asp-for="AlisFiyat2"
+                                       name="AlisFiyat2"
+                                       id="AlisFiyat2"
+                                       type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AlisFiyat3" class="control-label">Alış Fiyat 3 </label>
+                                <input class="form-control"
+                                       asp-for="AlisFiyat3"
+                                       name="AlisFiyat3"
+                                       id="AlisFiyat3"
+                                       type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SatisFiyat1" class="control-label">Satış Fiyat 1 </label>
+                                <input class="form-control"
+                                       asp-for="SatisFiyat1"
+                                       name="SatisFiyat1"
+                                       id="SatisFiyat1"
+                                       type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SatisFiyat2" class="control-label">Satış Fiyat 2 </label>
+                                <input class="form-control"
+                                       asp-for="SatisFiyat2"
+                                       name="SatisFiyat2"
+                                       id="SatisFiyat2"
+                                       type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SatisFiyat3" class="control-label">Satış Fiyat 3 </label>
+                                <input class="form-control"
+                                       asp-for="SatisFiyat3"
+                                       name="SatisFiyat3"
+                                       id="SatisFiyat3"
+                                       type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="GecerliFiyat" class="control-label">Geçerli Fiyat </label>
+                                <select asp-for="GecerliFiyat" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Geçerli Fiyat Seçiniz" data-size="7"
+                                        required="true"
+                                        asp-items="Html.GetEnumSelectList<FinalProject.Erp.Common.Enums.FiyatGrubu>()">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StokGrubuId" class="control-label">Stok Grubu </label>
+                                <select asp-for="StokGrubuId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Stok Grubu Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokGruplar">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StokAltGrubuId" class="control-label">Stok Alt Grubu </label>
+                                <select asp-for="StokAltGrubuId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Stok Alt Grubu Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokAltGruplar">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="MarkaId" class="control-label">Marka </label>
+                                <select asp-for="MarkaId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Marka Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokMarkalar">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ModelId" class="control-label">Model </label>
+                                <select asp-for="ModelId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Model Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokModeller">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="BirimId" class="control-label">Birim </label>
+                                <select asp-for="BirimId" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Birim Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokBirimler">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="OzelKod1Id" class="control-label">Özel Kod 1 </label>
+                                <select asp-for="OzelKod1Id" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Özel Kod 1 Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokOzelKodlar1">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="OzelKod2Id" class="control-label">Özel Kod 2 </label>
+                                <select asp-for="OzelKod2Id" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Özel Kod 2 Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokOzelKodlar2">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="OzelKod3Id" class="control-label">Özel Kod 3 </label>
+                                <select asp-for="OzelKod3Id" class="selectpicker"
+                                        data-style="btn btn-default btn-block"
+                                        title="Özel Kod 3 Seçiniz" data-size="7"
+                                        asp-items="ViewBag.StokOzelKodlar3">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Aciklama" class="control-label">Açıklama </label>
+                        <input class="form-control"
+                               asp-for="Aciklama"
+                               name="Aciklama"
+                               id="registerAciklama"
+                               type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Durum" class="control-label">Aktif / Pasif </label>
+                        <input asp-for="Durum" type="checkbox" class="switch-icon" checked>
+                    </div>
+                    <div class="category"><star>*</star> Zorunlu Alan</div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="mr-2 btn btn-danger btn-fill pull-right">Kaydet</button>
+                    <a asp-controller="Stok" asp-action="Index" class="mr-2 btn btn-default btn-fill pull-right">Vazgeç</a>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#registerFormValidation').validate();
+            $('#loginFormValidation').validate();
+            $('#allInputsFormValidation').validate();
+        });
+    </script>
+
+}
+

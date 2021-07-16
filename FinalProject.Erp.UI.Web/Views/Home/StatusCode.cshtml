@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Sayfa Bulunamadı";
+    Layout = "~/Views/Shared/_StandartLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-4 display-3 text-center">
+            <img src="~/img/error404.jpg" class="w-100 img-fluid" />
+            <div class="text-center" style="font-size:24px">
+                @ViewBag.Code
+            </div>
+            <div class="text-center" style="font-size:24px">
+                @ViewBag.Message
+            </div>
+        </div>
+        <div class="col-md-4">
+            
+        </div>
+    </div>
+</div>

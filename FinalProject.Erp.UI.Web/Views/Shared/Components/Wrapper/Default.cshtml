@@ -1,0 +1,26 @@
+﻿@model AppUserEditDto
+
+<div class="info">
+    <div class="photo">
+        <img src="~/img/profile/@Model.Resim" />
+    </div>
+
+    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+        <span>
+            @Model.Adi @Model.Soyadi (@Model.UserName)
+            <b class="caret"></b>
+        </span>
+    </a>
+    <div class="clearfix"></div>
+
+    <div class="collapse" id="collapseExample">
+        <ul class="nav">
+            <li>
+                <a asp-area="" asp-controller="Profile" asp-action="Index">
+                    <span class="sidebar-mini">Pr</span>
+                    <span class="sidebar-normal">Profilim</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

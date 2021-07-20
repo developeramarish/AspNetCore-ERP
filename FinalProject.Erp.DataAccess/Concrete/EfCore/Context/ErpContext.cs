@@ -14,11 +14,8 @@ namespace FinalProject.Erp.DataAccess.Concrete.EfCore.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(
-            //        @"Data Source=LAPTOP-F436T3TL\SQL2017; Initial Catalog=FinalProjeErpDb; User Id=sa; Password=1",
-            //        builder=> builder.EnableRetryOnFailure());
             optionsBuilder.UseSqlServer(
-                    @"Data Source=LAPTOP-F436T3TL\SQL2017; Initial Catalog=FinalProjeErpDb; User Id=sa; Password=1");
+                    @"Data Source=LAPTOP-F436T3TL\SQL2017; Initial Catalog=ciErpDb; User Id=sa; Password=1");
 
             base.OnConfiguring(optionsBuilder);
         }
